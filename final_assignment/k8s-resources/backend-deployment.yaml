@@ -1,0 +1,33 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: backend-deployment
+  namespace: crud-app
+  labels:
+    app: crud_app
+    type: backend
+
+spec:
+
+  containers:
+    - name: backend-container
+      imagePullPolicy: Never
+      image: final_assignment-backend:latest
+  
+      env:
+        - name: db_address
+          value: db
+
+        - name: db_username
+          value: postgres
+        
+        - name: db_name
+          value: postgres
+        
+        - name: db_password
+          valueFrom:
+            secretKeyRef:
+              name: db-secret-pass
+              key: DB_PASSWORD

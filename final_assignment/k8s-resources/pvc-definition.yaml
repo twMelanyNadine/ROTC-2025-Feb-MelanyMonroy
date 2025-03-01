@@ -1,0 +1,14 @@
+apiVersion: v1
+
+kind: PersistentVolumeClaim
+
+metadata:
+  name: pv1-claim
+
+spec:
+  accessModes:
+    - ReadWriteMany
+
+  resources:
+    requests:
+      storage: 500Mi
